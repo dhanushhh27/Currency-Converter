@@ -1,6 +1,6 @@
 const BASE_URL = 
 "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
-
+// const GEMINI_API_KEY = "";//ENTER YOUR API KEY HERE
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
 const fromCurr = document.querySelector(".from select")
@@ -49,6 +49,7 @@ for(let select of dropdowns){
         console.log("Exchange Rate:", rate);
         console.log("Final Amount:", finalAmount);
         msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount.toFixed(3)} ${toCurr.value}`;
+        fetchCurrencySummary(fromCurr.value, toCurr.value);
         } catch (error) {
         console.error("Error fetching the exchange rate:", error);
     }
@@ -62,6 +63,33 @@ for(let select of dropdowns){
         img.src = newSrc;
 
     };
+
+    const fetchCurrencySummary = async (from, to) => {
+    const summaryBox = document.getElementById("ai-summary");
+    summaryBox.style.display = "block";
+    summaryBox.innerText = "✨ AI is analyzing trends...";
+
+    const prompt = `Give me one fun fact or a recent economic trend about the exchange rate between ${from} and ${to}. Keep it under 20 words.`;
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }]
+            })
+        });
+
+        const data = await response.json();
+        
+        // Extract the text from the Gemini response structure
+        const aiText = data.candidates[0].content.parts[0].text;
+        summaryBox.innerText = `✨ AI Insight: ${aiText}`;
+    } catch (error) {
+        console.error("AI Error:", error);
+        summaryBox.innerText = "✨ AI Insight is currently unavailable.";
+    }
+};
     
     btn.addEventListener("click", async(evt) => {
         evt.preventDefault();
