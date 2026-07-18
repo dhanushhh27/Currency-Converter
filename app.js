@@ -93,3 +93,21 @@ themeBtn.addEventListener("click", () => {
         localStorage.setItem("theme", "light");
     }
 });
+const swapIcon = document.getElementById("arrow");
+
+swapIcon.addEventListener("click", () => {
+    let tempCode = fromCurr.value;
+    fromCurr.value = toCurr.value;
+    toCurr.value = tempCode;
+
+    updateFlag(fromCurr);
+    updateFlag(toCurr);
+
+    updateExchangeRate();
+
+    swapIcon.classList.add("rotate");
+    setTimeout(() => {
+        swapIcon.classList.remove("rotate");
+    }, 300);
+});
+
