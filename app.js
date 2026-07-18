@@ -48,7 +48,7 @@ for(let select of dropdowns){
         let finalAmount = amtVal * rate;
         console.log("Exchange Rate:", rate);
         console.log("Final Amount:", finalAmount);
-        msg.innerText= `${amtVal} ${fromCurr.value}= ${finalAmount}${toCurr.value}`;
+        msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount.toFixed(3)} ${toCurr.value}`;
         } catch (error) {
         console.error("Error fetching the exchange rate:", error);
     }
