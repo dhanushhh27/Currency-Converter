@@ -3,9 +3,6 @@
     padding: 0;
 }
 
-
-
-
 .head{
     display: flex;
     justify-content: center;
@@ -14,6 +11,7 @@
     padding: 50px;
     
 }
+
 body{
     background-color: #A5AF79;
 }
@@ -75,7 +73,6 @@ select{
     align-items: center;
     width: 6rem;
     border-radius: 10px;
-    
 }
 
 .msg{
@@ -133,9 +130,6 @@ form button{
   }
 }
 
-
-
-
 form input, form select {
   background-color: var(--box-bg);
   color: var(--text-main);
@@ -167,4 +161,3 @@ form input, form select {
     font-size: 0.8rem; 
   }
 }
-
