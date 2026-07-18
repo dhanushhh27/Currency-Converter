@@ -8,7 +8,10 @@
     justify-content: center;
     align-items: center;
     background-color: #FFEED6;
-    padding: 50px;
+    padding: 25px;
+    font-style: italic;
+    font-family: cursive;
+    color: black;
     
 }
 
@@ -113,6 +116,8 @@ form button{
   --border-color: #444444;
   .head{
     background-color: #285A48;
+    color: whitesmoke;
+    font-family: cursive;
   }
   #main{
     background-color: #B0E4CC;
